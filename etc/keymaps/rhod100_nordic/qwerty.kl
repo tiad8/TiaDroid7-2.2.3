@@ -1,0 +1,14 @@
+# Keymaping for HTC RHODIUM Nordic (swedish, norwegian, danish, finnish) variant
+# Android 'navipad' layout
+# Szymon Waliczek [majsterrr@gmail.com]
+
+
+# v1.0 2010/04/06
+#	- initial release
+
+key 116   POWER             WAKE
+key 107   HOME           WAKE_DROPPED
+key 114   VOLUME_DOWN
+key 115   VOLUME_UP
+
+key 169   CAMERA # PTT

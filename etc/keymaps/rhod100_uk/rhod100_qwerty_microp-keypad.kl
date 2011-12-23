@@ -1,0 +1,107 @@
+#-------------------------------------------------------------------------------
+# HTC Touch Pro 2 (RHOD100) Android QWERTY MicroP Key Layout.
+#
+#   Used by these Rhod100 Models: IT, NL, Nordic & UK
+#   Also used by: Rhod110
+#
+#-------------------------------------------------------------------------------
+# v1.3 2010/2/17 - F22 <f22.xda@gmail.com>
+#       - Comment adjustment
+#
+# v1.2 2010/1/21 - F22 <f22.xda@gmail.com>
+#       - Combined all QWERTY Rhod100 layouts into this file. 
+#       - Reorganized file for easier understanding of what's what.
+#       - Added entry for MUTE scan code.
+#       - Uncommented WAKE_DROPPED behavior for all dpad keys.
+#
+# v1.1 2010/11/15 - F22 <f22.xda@gmail.com>
+#       - mapped ctrl key to DPAD_CENTER since android doesn't have a 
+#         key code for ctrl and a number of apps including terminal
+#         emulator treat DPAD_CENTER as ctrl. (Old solution merely
+#         mapped ctrl to MENU instead in the layout, and MENU to 
+#         ctrl-c in the keymap. New layout allows any ctrl character,
+#         not just ctrl-c.)      
+#       - mapped envelope key to SEARCH since its unused and we don't
+#         currently have a search key. Useful for keyboard short-cuts. 
+#
+# v1.0 2010/04/06 - Szymon Waliczek [majsterrr@gmail.com]
+#	- initial release 
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# Top row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 2     1
+key 3     2
+key 4     3
+key 5     4
+key 6     5
+key 7     6
+key 8     7
+key 9     8
+key 10    9
+key 11    0
+
+#-------------------------------------------------------------------------------
+# Second row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 16    Q
+key 17    W
+key 18    E
+key 19    R
+key 20    T
+key 21    Y
+key 22    U
+key 23    I
+key 24    O
+key 25    P
+
+#-------------------------------------------------------------------------------
+# Third row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 30    A
+key 31    S
+key 32    D
+key 33    F
+key 34    G
+key 35    H
+key 36    J
+key 37    K
+key 38    L
+key 14    DEL
+
+#-------------------------------------------------------------------------------
+# Fourth row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 42    SHIFT_LEFT
+key 44    Z
+key 45    X
+key 46    C
+key 47    V
+key 48    B
+key 49    N
+key 50    M
+key 105   DPAD_UP	   WAKE_DROPPED
+key 28    ENTER
+
+#-------------------------------------------------------------------------------
+# Fifth row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 464   DPAD_CENTER	   WAKE_DROPPED     # Ctrl
+key 215   ALT_LEFT	                    # FN
+key 127   SEARCH	   WAKE_DROPPED     # Envelope
+key 51    COMMA
+key 57    SPACE
+key 52    PERIOD
+key 108   DPAD_LEFT	   WAKE_DROPPED
+key 106   DPAD_DOWN	   WAKE_DROPPED
+key 103   DPAD_RIGHT	   WAKE_DROPPED
+
+#-------------------------------------------------------------------------------
+# Front panel & other non-keyboard buttons handled by the microp-keypad driver.
+#-------------------------------------------------------------------------------
+key 231   CALL		   WAKE_DROPPED     # b1 (Call)
+key 139   MENU		   WAKE_DROPPED     # b2 (Windows)
+key 158   BACK		   WAKE_DROPPED     # b3 (Back)
+
+key 102   MUTE             WAKE_DROPPED     # Rear Mute                  

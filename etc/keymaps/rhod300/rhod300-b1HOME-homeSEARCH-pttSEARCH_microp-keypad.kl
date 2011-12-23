@@ -1,0 +1,119 @@
+#-------------------------------------------------------------------------------
+# HTC 'Tilt 2' (RHOD 300 - AT&T) Android Keyboard Layout w/ home=SEARCH 
+#                                                         & ptt =SEARCH
+#                                                         & b1  =HOME
+#-------------------------------------------------------------------------------
+# v1.0 2011/2/27 - F22 <f22.xda@gmail.com>
+#       - file renamed from rhod300-homeSEARCH-pttSEARCH_microp-keypad.kl to 
+#         rhod300-b1HOME_microp-keypad.kl
+#       - reassigned front panel button #1 to HOME from CALL
+#-------------------------------------------------------------------------------
+# Previously derived from:
+#   rhod300_microp-keypad.kl
+#
+# v1.2 2011/2/26 - F22 <f22.xda@gmail.com>
+#       - fixed button number comment error
+#
+# v1.1 2010/2/12 - F22 <f22.xda@gmail.com>
+#       - changed TAB & FOCUS keycodes to BACKSLASH & GRAVE
+#
+# v1.0 2010/1/28 - F22 <f22.xda@gmail.com>
+#       - keyboard Home key remapped to SEARCH
+#       - PTT key remapped from CAMERA to SEARCH
+#       - file renamed to rhod300-homeSEARCH-pttSEARCH_microp-keypad.kl
+#-------------------------------------------------------------------------------
+# Originally derived from
+#   tilt2_microp-keypad.kl
+#
+# v1.2 2010/1/20 - F22 <f22.xda@gmail.com>
+#       - reorganized file for easier understanding of what's what.
+#       - added entry for MUTE scan code.
+#       - added WAKE_DROPPED behavior to all dpad keys.
+#
+# v1.1 2010/11/15 - F22 <f22.xda@gmail.com>
+#       - mapped ok key to DPAD_CENTER since android doesn't have a 
+#         key code for ctrl and a number of apps including terminal
+#         emulator treat DPAD_CENTER as ctrl. 
+#
+# v1.0 2010/02/01 - Adam Williamson <adamwill AT shaw DOT ca>
+#	- initial release
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# Top row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 2     AT
+key 3     BACKSLASH                         # _
+key 4     GRAVE                             # !
+key 5     LEFT_BRACKET                      # (
+key 6     RIGHT_BRACKET                     # )
+key 7     APOSTROPHE                        
+key 8     EQUALS                            # "
+key 9     SEMICOLON
+key 10    PLUS                              # :
+key 11    SLASH
+
+#-------------------------------------------------------------------------------
+# Second row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 16    Q
+key 17    W
+key 18    E
+key 19    R
+key 20    T
+key 21    Y
+key 22    U
+key 23    I
+key 24    O
+key 25    P
+
+#-------------------------------------------------------------------------------
+# Third row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 30    A
+key 31    S
+key 32    D
+key 33    F
+key 34    G
+key 35    H
+key 36    J
+key 37    K
+key 38    L
+key 14    DEL
+
+#-------------------------------------------------------------------------------
+# Fourth row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 42    ALT_LEFT                          # FN
+key 44    Z
+key 45    X
+key 46    C
+key 47    V
+key 48    B
+key 49    N
+key 50    M
+key 105   DPAD_UP	   WAKE_DROPPED
+key 28    ENTER
+
+#-------------------------------------------------------------------------------        
+# Fifth row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 464   SHIFT_LEFT
+key 215   DPAD_CENTER      WAKE_DROPPED     # OK (see v1.1 comments above)
+key 127   SEARCH           WAKE_DROPPED     # Home
+key 51    COMMA
+key 57    SPACE
+key 52    PERIOD
+key 108   DPAD_LEFT	   WAKE_DROPPED
+key 106   DPAD_DOWN	   WAKE_DROPPED
+key 103   DPAD_RIGHT	   WAKE_DROPPED
+
+#-------------------------------------------------------------------------------
+# Front panel & other non-keyboard buttons handled by the microp-keypad driver.
+#-------------------------------------------------------------------------------
+key 231   HOME             WAKE_DROPPED     # b1 (Call)
+key 139   MENU             WAKE_DROPPED     # b2 (Windows)
+key 158   BACK             WAKE_DROPPED     # b3 (Back)
+
+key 102   MUTE             WAKE_DROPPED     # Rear Mute
+key 212   SEARCH	   WAKE_DROPPED     # Push To Talk

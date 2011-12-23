@@ -1,0 +1,75 @@
+#-------------------------------------------------------------------------------
+# HTC Touch Pro 2 (RHOD100 - DE) Android Keyboard Character Map
+#-------------------------------------------------------------------------------
+# v1.2 2011/1/20 - F22 <f22.xda@gmail.com>
+#       - moved { and } to shift-8 and 9 respectively to standardize across all
+#         rhodiums. 
+#       - removed unneeded MENU keycode. 
+#       - mapped ¢ as shift-4.
+#
+# v1.1 2010/11/19 - F22 <f22.xda@gmail.com>
+#       - mapped the symbol palette (0xEF01) to fn-, (SYM key)
+#       - mapped { } [ ] < > ` | and ~ to fn-d f y x c v f z and t 
+#         respectively.
+#       - fixed fn-l so it maps to ' instead of 0x92. 
+#       - removed keycodes that do not exist on this keyboard and that
+#         are not needed for the dialer.
+#       - substituted ''' in place of 0x27 for easier reading.
+#
+# v1.0 2010/11/17 - Bombenbach from forum.xda-developers.com
+#       - reversed compiled binary to produce source
+#       - fixed umlauts
+#-------------------------------------------------------------------------------
+[type=QWERTY]
+
+#-------------------------------------------------------------------------------
+# keycode    Display    Number     Base     Shift      Alt    Shift+Alt
+#-------------------------------------------------------------------------------
+1              '1'       '1'       '1'       '1'       '!'       '!'
+2              '2'       '2'       '2'       '2'       '"'       '"'
+3              '3'       '3'       '3'       '3'       '#'       '#'
+4              '4'       '4'       '4'       0xA2      '$'       '$'
+5              '5'       '5'       '5'       '5'       '%'       '%'
+6              '6'       '6'       '6'       '6'       '&'       '&'
+7              '7'       '7'       '7'       '7'       '*'       '*'
+8              '8'       '8'       '8'       '{'       '('       '('
+9              '9'       '9'       '9'       '}'       ')'       ')'
+0              '0'       '0'       '0'       '0'       '^'       '^'
+
+A              'A'       'A'       'a'       'A'       0xE4      0xC4
+B              'B'       'B'       'b'       'B'       '?'       '?'
+C              'C'       'C'       'c'       'C'       '<'       '<'
+D              'D'       'D'       'd'       'D'       'd'       'D'
+E              'E'       'E'       'e'       'E'       0x20AC    0x20AC
+F              'F'       'F'       'f'       'F'       '`'       '`'
+G              'G'       'G'       'g'       'G'       '+'       '+'
+H              'H'       'H'       'h'       'H'       '='       '='
+I              'I'       'I'       'i'       'I'       '-'       '-'
+J              'J'       'J'       'j'       'J'       '\'       '\'
+K              'K'       'K'       'k'       'K'       '/'       '/'
+L              'L'       'L'       'l'       'L'       '''       '''
+M              'M'       'M'       'm'       'M'       ':'       ':'
+N              'N'       'N'       'n'       'N'       ';'       ';'
+O              'O'       'O'       'o'       'O'       0xF6      0xD6
+P              'P'       'P'       'p'       'P'       '_'       '_'
+Q              'Q'       'Q'       'q'       'Q'       '@'       '@'
+R              'R'       'R'       'r'       'R'       'r'       'R'
+S              'S'       'S'       's'       'S'       0xDF      'S'
+T              'T'       'T'       't'       'T'       '~'       '~'
+U              'U'       'U'       'u'       'U'       0xFC      0xDC
+V              'V'       'V'       'v'       'V'       '>'       '>'
+W              'W'       'W'       'w'       'W'       0xA3      0xA3
+X              'X'       'X'       'x'       'X'       ']'       ']'
+Y              'Y'       'Y'       'y'       'Y'       '['       '['
+Z              'Z'       'Z'       'z'       'Z'       '|'       '|'
+
+ENTER          0xA       0xA       0xA       0xA       0xA       0xA
+COMMA          ','       ','       ','       ','       0xEF01    0xEF01
+SPACE          0x20      0x20      0x20      0x20      0x9       0x9
+PERIOD         '.'       '.'       '.'       '.'       '.'       '.'
+
+#-------------------------------------------------------------------------------
+# Required for the telephone app's software keypad.
+#-------------------------------------------------------------------------------
+STAR	       '*'       '*'       '*'       '*'       '*'       '*'
+POUND	       '#'       '#'       '#'       '#'       '#'       '#'

@@ -1,0 +1,36 @@
+#!/system/bin/sh
+
+PATH=/system/xbin:/system/bin:/data/bin
+PROP=my.sd.available
+COUNT=0
+DOT=.
+
+echo "Initializing..."
+
+for MTD in 5 4 3; do
+	echo 16 > /sys/block/mtdblock$MTD/queue/read_ahead_kb
+done
+
+[ -f /data/local/bootanimation.zip ] || ln -s /system/customize/resource/bootanimation.zip /data/local/bootanimation.zip
+
+echo "Waiting for SD card to settle..."
+
+while [ ! -h /sys/block/mmcblk0 ]; do
+	echo $DOT
+	DOT=${DOT}.
+	sleep 1
+	COUNT=$((COUNT+1))
+	if [ "$COUNT" -ge 6 ]; then
+		echo "No SD card present or SD card too slow..."
+		NOSD=yes
+		break
+	fi
+done
+
+if [ "$NOSD" = "yes" ]; then
+	setprop $PROP 0
+else
+	echo 128 > /sys/block/mmcblk0/queue/read_ahead_kb
+	echo noop > /sys/block/mmcblk0/queue/scheduler
+	setprop $PROP 1
+fi

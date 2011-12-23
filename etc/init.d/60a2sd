@@ -1,0 +1,159 @@
+#!/system/bin/sh
+
+PATH=/system/xbin:/system/bin:/data/bin
+FLAG1=/data/local/doa2sd
+FLAG2=/data/local/dodc2sd
+FLAG3=/data/local/dodata2ext
+PROP=my.a2sd.active
+SELF=`basename $0`
+
+PrintUsage () {
+	echo "Usage: $SELF [--enable|--disable|--dc2sd|--free]"
+}
+
+PleaseReboot () {
+	echo "Please reboot your phone for changes to take effect..." && sync
+}
+
+if [ "$SELF" = "a2sd" ]; then
+	umask 022
+	if [ "$#" -eq 1 ]; then
+		ENABLED=yes
+		ACTIVE=`getprop $PROP`
+		[ -f "$FLAG1" ] || ENABLED=no
+		case "$1" in
+			--enable)
+				if [ "$ENABLED" = "no" ]; then
+					if [ -f "$FLAG3" ]; then
+						echo "Cannot enable a2sd, you need to disable data2ext first..."
+					else
+						echo "Enabling a2sd..." && touch $FLAG1 && rm /data/local/init.d/30disa2sd > /dev/null 2>&1
+						PleaseReboot
+					fi
+				else
+					if [ "$ACTIVE" != "1" ]; then
+						echo "a2sd is already enabled but not active..."
+					else
+						echo "a2sd is already enabled and active..."
+					fi
+				fi
+			;;
+			--disable)
+				if [ "$ENABLED" = "yes" ]; then
+					echo "Disabling a2sd..." && rm $FLAG1 $FLAG2 > /dev/null 2>&1
+					cat > /data/local/init.d/30disa2sd <<-EOF
+						#!/system/bin/sh
+						for DIR in app app-private dalvik-cache; do
+						  if [ -h "/data/\$DIR" ]; then
+						    rm /data/\$DIR
+						    mkdir /data/\$DIR
+						    chown 1000:1000 /data/\$DIR
+						    chmod 775 /data/\$DIR
+						  fi
+						done
+						rm /data/local/init.d/30disa2sd
+					EOF
+					chmod 755 /data/local/init.d/30disa2sd
+					PleaseReboot
+				else
+					echo "a2sd is already disabled, doing nothing..."
+				fi
+			;;
+			--dc2sd)
+				if [ "$ENABLED" = "yes" ]; then
+					echo "Enabling dc2sd..." && touch $FLAG2
+					PleaseReboot
+				else
+					echo "a2sd not enabled, doing nothing..."
+				fi
+			;;
+			--free)
+				if [ "$ACTIVE" = "1" ]; then
+					df -h /dev/block/mtdblock5 /dev/block/mmcblk0p2
+				else
+					echo "a2sd is not active..."
+				fi
+			;;
+			*)
+				PrintUsage
+			;;
+		esac
+	else
+		PrintUsage
+	fi 
+	exit 0
+fi
+
+[ -f "$FLAG1" ] || exit 0
+[ `getprop my.sd.available` = "0" ] && exit 0
+
+echo "Activating a2sd..."
+
+PARTNO=2
+PART=mmcblk0p${PARTNO}
+DEV=/dev/block/${PART}
+SD=/mnt/asec/sd
+MTPF=/data/local/mntparms
+DIRS="app app-private"
+
+[ -f "$FLAG2" ] && DIRS="app app-private dalvik-cache"
+
+ReplaceSymlinks () {
+	# replace symlinks with directories so we can boot without ext partition mounted
+	for DIR in app app-private dalvik-cache; do
+		if [ -h "/data/$DIR" ]; then
+			rm -f /data/$DIR
+			mkdir /data/$DIR
+			chown 1000:1000 /data/$DIR
+			chmod 775 /data/$DIR
+		fi
+	done
+}
+
+MoveApps () {
+	# move apps to sdcard and symlink them back
+	for DIR in $DIRS; do
+		if [ -d "/data/$DIR" ] && [ ! -h "/data/$DIR" ]; then
+			echo "Moving $DIR to SD card..."
+			cp -a /data/$DIR $SD/
+			rm -rf /data/$DIR
+			ln -s $SD/$DIR /data/$DIR
+		fi
+		[ -h "/data/$DIR" ] || ln -s $SD/$DIR /data/$DIR
+	done
+}
+
+if [ -d "/sys/block/mmcblk0/${PART}" ]; then
+	if [ ! -b "$DEV" ]; then
+		echo "Device file $DEV does not exist yet, creating it..."
+		mknod $DEV b 179 $PARTNO
+		chmod 600 $DEV
+	fi
+	# fsck the sdcard filesystem first
+	echo "Executing file system check..."
+	if e2fsck -pf $DEV || e2fsck -pf $DEV;then
+		# make sd directory, mount it and set perms
+		[ -d "$SD" ] || mkdir $SD
+		echo "Mounting ${DEV} to ${SD}..."
+		if [ -f "$MTPF" ]; then
+			MNTPARMS=`cat $MTPF`
+		else
+			MNTPARMS="nodev,noatime,nodiratime"
+		fi
+		mount -t auto -o $MNTPARMS $DEV $SD 
+		chown 1000.1000 $SD
+		chmod 775 $SD
+	else
+		echo "Partition check failed, manual intervention required, aborting..."
+		ReplaceSymlinks
+		exit 1
+	fi
+	MoveApps
+	echo "a2sd activated..."
+	setprop $PROP 1
+else
+	echo "No partition for a2sd available, aborting..."
+	ReplaceSymlinks
+	exit 1
+fi
+sync

@@ -1,0 +1,2 @@
+#!/system/bin/sh
+echo "Welcome to `getprop ro.product.version`"

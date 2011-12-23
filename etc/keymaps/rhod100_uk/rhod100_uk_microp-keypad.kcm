@@ -1,0 +1,77 @@
+#-------------------------------------------------------------------------------
+# HTC Touch Pro 2 (RHOD100 - UK, NL; RHOD110) Android Keyboard Character Map
+#-------------------------------------------------------------------------------
+# v1.1 2011/1/31 - F22 <f22.xda@gmail.com>
+#       - rhod110 symbolically linked to rhod100_uk upon request since they are
+#         identical.
+#
+# v1.1 2011/1/20 - F22 <f22.xda@gmail.com>
+#       - rhod100_nl symbolically linked to rhod100_uk upon request since they 
+#         are identical.
+#       - moved { and } to shift-9 and 0 respectively to standardize across all
+#         rhodiums. 
+#       - removed unneeded MENU keycode.
+#       - mapped \ and ¢ to fn-b and shift-4 respectively.
+#
+# v1.0 2010/11/20 - F22 <f22.xda@gmail.com>
+#       - mapped the symbol palette (0xEF01) to fn-, (SYM key)
+#       - mapped { } [ ] < > ` | and ~ to fn-a s z x c v q y and t 
+#         respectively.
+#       - removed keycodes that do not exist on this keyboard and that
+#         are not needed for the dialer.
+#
+# Decompiled from binary by snalbansed from forum.xda-developers.com
+#-------------------------------------------------------------------------------
+[type=QWERTY]
+
+#-------------------------------------------------------------------------------
+# Keycode    Display    Number     Base     Shift      Alt   Shift+Alt
+#-------------------------------------------------------------------------------
+1              '1'       '1'       '1'       '1'       '!'       '!'
+2              '2'       '2'       '2'       '2'       '@'       '@'
+3              '3'       '3'       '3'       '3'       '#'       '#'
+4              '4'       '4'       '4'       0xA2      '$'       '$'
+5              '5'       '5'       '5'       '5'       '%'       '%'
+6              '6'       '6'       '6'       '6'       '^'       '^'
+7              '7'       '7'       '7'       '7'       '&'       '&'
+8              '8'       '8'       '8'       '8'       '*'       '*'
+9              '9'       '9'       '9'       '{'       '('       '('
+0              '0'       '0'       '0'       '}'       ')'       ')'
+
+A              'A'       'A'       'a'       'A'       'a'       'A'
+B              'B'       'B'       'b'       'B'       '\'       '\'
+C              'C'       'C'       'c'       'C'       '<'       '<'
+D              'D'       'D'       'd'       'D'       'd'       'D'
+E              'E'       'E'       'e'       'E'       0x20AC    0x20AC
+F              'F'       'F'       'f'       'F'       'f'       'F'
+G              'G'       'G'       'g'       'G'       'g'       'G'
+H              'H'       'H'       'h'       'H'       ';'       ';'
+I              'I'       'I'       'i'       'I'       '='       '='
+J              'J'       'J'       'j'       'J'       ':'       ':'
+K              'K'       'K'       'k'       'K'       '''       '''
+L              'L'       'L'       'l'       'L'       '"'       '"'
+M              'M'       'M'       'm'       'M'       '?'       '?'
+N              'N'       'N'       'n'       'N'       '/'       '/'
+O              'O'       'O'       'o'       'O'       '-'       '-'
+P              'P'       'P'       'p'       'P'       '_'       '_'
+Q              'Q'       'Q'       'q'       'Q'       '`'       '`'
+R              'R'       'R'       'r'       'R'       0xA3      0xA3
+S              'S'       'S'       's'       'S'       's'       'S'
+T              'T'       'T'       't'       'T'       '~'       '~'
+U              'U'       'U'       'u'       'U'       '+'       '+'
+V              'V'       'V'       'v'       'V'       '>'       '>'
+W              'W'       'W'       'w'       'W'       'w'       'W'
+X              'X'       'X'       'x'       'X'       ']'       ']'
+Y              'Y'       'Y'       'y'       'Y'       '|'       '|'
+Z              'Z'       'Z'       'z'       'Z'       '['       '['
+
+ENTER          0xA       0xA       0xA       0xA       0xA       0xA
+COMMA          ','       ','       ','       ','       0xEF01    0xEF01
+SPACE          0x20      0x20      0x20      0x20      0x9       0x9
+PERIOD         '.'       '.'       '.'       '.'       '.'       '.'
+
+#-------------------------------------------------------------------------------
+# Required for the telephone app's software keypad.
+#-------------------------------------------------------------------------------
+STAR           '*'       '*'       '*'       '*'       '*'       '*'
+POUND          '#'       '#'       '#'       '#'       '#'       '#'

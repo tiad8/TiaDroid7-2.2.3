@@ -1,0 +1,119 @@
+#-------------------------------------------------------------------------------
+# HTC Touch Pro 2 (RHOD500 - Verizon) Android Keyboard Layout
+#-------------------------------------------------------------------------------
+# v1.3  (RHOD500) 2010/2/2  - F22 <f22.xda@gmail.com>
+#        - fixed bug due to WAKE_DROPPED being mispelled WAKED_DROPPED
+#        - adjusted a few comments.
+#
+# v1.2  (RHOD500) 2010/1/20 - F22 <f22.xda@gmail.com>
+#        - reorganized file for easier understanding of what's what.
+#        - Added WAKE_DROPPED behavior to all dpad keys.
+#        - Remapped the scan code for the rear mute button from REAR_MUTE to 
+#          MUTE since the REAR_MUTE keycode doesn't exist.
+#
+# v1.1  (RHOD500) 2010/11/15 - F22 <f22.xda@gmail.com>
+#        - mapped envelope key to SEARCH instead of GRAVE since it's unused and 
+#          we don't currently have a search key. Useful for keyboard short-cuts. 
+#        - mapped sym key to GRAVE instead of ENVELOPE to avoid confusion with 
+#          the physical envelope key which is mapped to SEARCH.
+#        - mapped star key to DPAD_CENTER instead of COMMA since we already 
+#          have a comma, and we need a control key for terminal emulator and 
+#          other apps that treat DPAD_CENTER as ctrl. 
+#
+# v1.0  (RHOD500) - Submitted by Mr. Pippy
+#        - Copied from RHOD400.
+#-------------------------------------------------------------------------------
+# Previously derived from:
+#   HTC Touch Pro 2 (RHOD400 - Sprint) Android Keyboard Layout
+#
+# v1.0 (RHOD400) 2010/03/02 - Justin W. Richeson <jrnosee AT gmail DOT com>
+#        - added 102 REAR_MUTE. Nothing will be placed in the .kcm for now.
+#        - Swapped ENVELOPE and GRAVE as the ENVELOPE is next to the FN button
+#          on the 400.  SMS/MMS key is marked as GRAVE.
+#-------------------------------------------------------------------------------
+# Originally derived from:
+#   HTC Touch Pro 2 (RHOD210 - US T-Mobile) Android Keyboard Layout
+#
+# v1.1 2010/02/03 - Adam Williamson <adamwill AT shaw DOT ca>
+#	- don't wake on 'dpad' presses are they're not front buttons
+#	- fix keypad arrows (as close as possible for now)
+#
+# v1.0 2010/02/01 - Adam Williamson <adamwill AT shaw DOT ca>
+#	- initial release
+#-------------------------------------------------------------------------------
+# Top row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 2     1
+key 3     2
+key 4     3
+key 5     4
+key 6     5
+key 7     6
+key 8     7
+key 9     8
+key 10    9
+key 11    0
+
+#-------------------------------------------------------------------------------
+# Second row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 16    Q
+key 17    W
+key 18    E
+key 19    R
+key 20    T
+key 21    Y
+key 22    U
+key 23    I
+key 24    O
+key 25    P
+
+#-------------------------------------------------------------------------------
+# Third row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 30    A
+key 31    S
+key 32    D
+key 33    F
+key 34    G
+key 35    H
+key 36    J
+key 37    K
+key 38    L
+key 14    DEL
+
+#-------------------------------------------------------------------------------
+# Fourth row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 42    SHIFT_LEFT        
+key 44    Z
+key 45    X
+key 46    C
+key 47    V
+key 48    B
+key 49    N
+key 50    M
+key 105   DPAD_UP          WAKE_DROPPED     
+key 28    ENTER
+
+#-------------------------------------------------------------------------------
+# Fifth row of keys, left to right.
+#-------------------------------------------------------------------------------
+key 464   ALT_LEFT                          # FN
+key 215   GRAVE                             # SYM (mapped to sym in key map)
+key 127   SEARCH           WAKE_DROPPED     # Envelope
+key 51    DPAD_CENTER      WAKE_DROPPED     # Star (see v1.1 comments above)
+key 57    SPACE
+key 52    PERIOD
+key 108   DPAD_LEFT        WAKE_DROPPED     
+key 106   DPAD_DOWN        WAKE_DROPPED     
+key 103   DPAD_RIGHT       WAKE_DROPPED     
+
+#-------------------------------------------------------------------------------
+# Front panel & other non-keyboard buttons handled by the microp-keypad driver.
+#-------------------------------------------------------------------------------
+key 231   CALL             WAKE_DROPPED     # b1 (Call)
+key 139   MENU             WAKE_DROPPED     # b2 (Windows)
+key 158   BACK             WAKE_DROPPED     # b3 (Back)
+
+key 102   MUTE             WAKE_DROPPED     # Rear Mute

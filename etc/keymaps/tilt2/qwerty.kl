@@ -1,0 +1,18 @@
+# HTC for AT&T 'Tilt 2' (Rhodium variant) Android 'navipad' layout
+# Adam Williamson <adamwill AT shaw DOT ca>
+
+# v1.0 2010/02/01
+#	- initial release
+
+# Very few buttons on the Tilt 2 are handled by the gpio driver.
+
+key 116   POWER             WAKE
+key 107   HOME           WAKE_DROPPED
+key 114   VOLUME_DOWN
+key 115   VOLUME_UP
+# Not currently working, but keeping the Fuze eventcode as a
+# placeholder. With current htc-msm-android kernels it generates the
+# same eventcode as the key 'e', 18, on the microp-keypad node, so
+# acts exactly like the 'e' key
+key 169   CAMERA # Push to talk
+

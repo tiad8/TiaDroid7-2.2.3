@@ -1,0 +1,112 @@
+#!/system/bin/sh
+
+PATH=/system/xbin:/system/bin:/data/bin
+FLAG1=/data/local/dodata2ext
+FLAG2=/data/local/doa2sd
+PROP=my.data2ext.active
+SELF=`basename $0`
+
+PrintUsage () {
+	echo "Usage: $SELF [--enable|--disable]"
+}
+
+PleaseReboot () {
+	echo "Please reboot your phone for changes to take effect..." && sync
+}
+
+if [ "$SELF" = "data2ext" ]; then
+	umask 022
+	if [ "$#" -eq 1 ]; then
+		ENABLED=yes
+		ACTIVE=`getprop $PROP`
+		[ -f "$FLAG1" ] || ENABLED=no
+		case "$1" in
+			--enable)
+				if [ "$ENABLED" = "no" ]; then
+					if [ -f "$FLAG2" ]; then
+						echo "Cannot enable Data2EXT, you need to disable a2sd first..."
+					else
+						echo "Enabling Data2EXT..." && touch $FLAG1
+						PleaseReboot
+					fi
+				else
+					if [ "$ACTIVE" != "1" ]; then
+						echo "Data2EXT is already enabled but not active..."
+					else
+						echo "Data2EXT is already enabled and active..."
+					fi
+				fi
+			;;
+			--disable)
+				if [ "$ENABLED" = "yes" ]; then
+					echo "Disabling Data2EXT..." && rm $FLAG1
+					PleaseReboot
+				else
+					echo "Data2EXT is already disabled, doing nothing..."
+				fi
+			;;
+			*)
+				PrintUsage
+			;;
+		esac
+	else
+		PrintUsage
+	fi 
+	exit 0
+fi
+
+[ -f "$FLAG1" ] || exit 0
+[ `getprop my.sd.available` = "0" ] && exit 0
+
+echo "Initiating Data2EXT..."
+
+PARTNO=2
+EXTPART=mmcblk0p${PARTNO}
+EXTDEV=/dev/block/${EXTPART}
+DATADIR=/mnt/asec/data
+MTPF=/data/local/mntparms
+
+if [ -d "/sys/block/mmcblk0/${EXTPART}" ]; then
+	if [ ! -b "$EXTDEV" ]; then
+		echo "Device file $EXTDEV does not exist yet, creating it..."
+		mknod $EXTDEV b 179 $PARTNO
+		chmod 600 $EXTDEV
+	fi
+	echo "Executing file system check..."
+	if e2fsck -pf $EXTDEV || e2fsck -pf $EXTDEV; then
+		echo "Mounting ${EXTDEV} to /data..."
+	else
+		echo "Partition check failed, manual intervention required, aborting..."
+		exit 1
+	fi
+	[ -d "$DATADIR" ] || mkdir $DATADIR
+	mount --move /data $DATADIR
+	if [ -f "$MTPF" ]; then
+		MNTPARMS=`cat $MTPF`
+	else
+		MNTPARMS="nodev,noatime,nodiratime"
+	fi
+	if mount -t auto -o $MNTPARMS $EXTDEV /data; then
+		echo "EXT partition mounted..."
+	else
+		echo "Mount failed, aborting..."
+		mount --move $DATADIR /data
+		exit 1	
+	fi
+	if [ ! -f /data/.data2ext ]; then
+		echo "First time initiation, copying files to EXT partition..."
+		chown 1000.1000 /data
+		chmod 775 /data
+		cd $DATADIR
+		cp -a `ls -A|egrep -v '^misc$|^system$|^property$|^local$|^lost\+found$'` /data/
+		for DIR in misc system property local; do
+			ln -s ${DATADIR}/${DIR} /data/${DIR}
+		done
+		touch /data/.data2ext
+	fi
+	echo "Data2EXT enabled..."
+	setprop $PROP 1
+else
+	echo "No partition for Data2EXT available, aborting..."
+fi
+sync

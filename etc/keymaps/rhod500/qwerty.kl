@@ -1,0 +1,15 @@
+# HTC for Verizon 'rhod500' (Rhodium500 variant) Android 'navipad' layout
+# Szymon Waliczek [majsterrr@gmail.com]
+# copied from rhod100 de by NeoMatrixJR [jrnosee@gmail.com]
+
+# v1.0 2010/02/05
+#	- initial release
+# v1.1 2010/02/06
+# HOME and POWER buttons swaped over.
+
+key 116   POWER             WAKE
+key 107   HOME           WAKE_DROPPED
+key 114   VOLUME_DOWN
+key 115   VOLUME_UP
+
+#key 169   CAMERA # Push to talk #we don't have this

@@ -1,0 +1,19 @@
+#-------------------------------------------------------------------------------
+# Rhodium GPIO Keypad Layout w/ Button 4 = HOME
+#-------------------------------------------------------------------------------
+# v1.01 2011/1/28 F22  <f22.xda@gmail.com>
+#        - changed name from rhod_navi_pad_b4home.kl to 
+#          rhod_gpio-keypad_b4HOME.kl
+#        - some additional commenting on power.
+#
+# v1.00 2010/11/20 F22  <f22.xda@gmail.com>
+#        - consolidated old rhodium navi_pad.kl files.
+#
+# Based on previous work for the Rhod100 by 
+#        Szymon Waliczek [majsterrr@gmail.com] and
+#        Adam Williamson <adamwill AT shaw DOT ca>
+#-------------------------------------------------------------------------------
+key 107   HOME             WAKE_DROPPED   # Front Panel - Button 4 (End)
+key 114   VOLUME_DOWN
+key 115   VOLUME_UP
+key 116   POWER            WAKE

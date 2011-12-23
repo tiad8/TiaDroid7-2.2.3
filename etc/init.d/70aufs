@@ -1,0 +1,80 @@
+#!/system/bin/sh
+
+PATH=/system/xbin:/system/bin:/data/bin
+FLAG=/data/local/dosysoverlay
+PROP=my.aufs.active
+SELF=`basename $0`
+
+PrintUsage () {
+	echo "Usage: $SELF [--enable|--disable]"
+}
+
+PleaseReboot () {
+	echo "Please reboot your phone for changes to take effect..." && sync
+}
+
+if [ "$SELF" = "aufs" ]; then
+	umask 022
+	if [ "$#" -eq 1 ]; then
+		ENABLED=yes
+		ACTIVE=`getprop $PROP`
+		[ -f "$FLAG" ] || ENABLED=no
+		case "$1" in
+			--enable)
+				if [ "$ENABLED" = "no" ]; then
+					echo "Enabling read-write /system overlay..." && touch $FLAG
+					PleaseReboot
+				else
+					if [ "$ACTIVE" != "1" ]; then
+						echo "Read-write /system overlay is already enabled but not active..."
+					else
+						echo "Read-write /system overlay is already enabled and active..."
+					fi
+				fi
+			;;
+			--disable)
+				if [ "$ENABLED" = "yes" ]; then
+					echo "Disabling read-write /system overlay..." && rm $FLAG
+					PleaseReboot
+				else
+					echo "Read-write /system overlay is already disabled, doing nothing..."
+				fi
+			;;
+			*)
+				PrintUsage
+			;;
+		esac
+	else
+		PrintUsage
+	fi 
+	exit 0
+fi
+
+[ -f "$FLAG" ] || exit 0
+
+echo "Setting read-write /system overlay..."
+
+RODIR=/mnt/asec/sysro
+RWDIR=`mount|grep mtdblock5|awk '{print $3}'`/sysrw
+MTOPTS="xino=/mnt/asec/.aufs.xino,dirs=${RWDIR}:${RODIR}=ro"
+
+[ -d "$RWDIR" ] || mkdir $RWDIR
+[ -d "$RODIR" ] || mkdir $RODIR
+
+echo "Checking for aufs support..."
+if [ ! -d /sys/fs/aufs ]; then
+	echo "No aufs support present, loading aufs module..."
+	if ! insmod /system/lib/modules/aufs.ko > /dev/null 2>&1; then
+		echo "Cannot load aufs module, aborting..."
+		exit 1
+	fi
+fi
+
+mount --move /system $RODIR
+if $RODIR/xbin/busybox mount -t aufs -o $MTOPTS overlay /system; then
+	echo "Overlay set..."
+	setprop $PROP 1
+else
+	echo "Setting overlay failed..."
+	$RODIR/xbin/busybox mount --move $RODIR /system
+fi

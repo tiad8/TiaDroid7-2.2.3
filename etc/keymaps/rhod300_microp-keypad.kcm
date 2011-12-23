@@ -1,0 +1,99 @@
+#-------------------------------------------------------------------------------
+# HTC 'Tilt 2' (RHOD300 - AT&T) Android Keyboard Character Map
+#-------------------------------------------------------------------------------
+# v1.4  2010/2/12 - F22 <f22.xda@gmail.com>
+#       - Changed TAB & FOCUS keycodes to BACKSLASH & GRAVE
+#
+# v1.31 2010/1/28 - F22 <f22.xda AT gmail DOT com>
+#        - renamed from tilt2_microp-keypad.kcm to rhod300_microp-keypad.kcm
+#
+# v1.30 2010/1/20 - F22 <f22.xda AT gmail DOT com>
+#        - mapped £ and ¢ as fn-r and fn-FOCUS respectively.
+#        - moved € from fn-FOCUS to fn-e so ¢ could have its key back.
+#
+# v1.20 2010/11/19 - F22 <f22.xda AT gmail DOT com>
+#        - mapped the symbol palette (0xEF01) to fn-<space> (SYM).
+#        - moved <tab> to fn-t so SYM could have its key back.
+#        - moved ~ to fn-w so tab could have fn-t.
+#        - removed keycodes that do not exist on this keyboard and that
+#          are not needed for the dialer.
+#
+# v1.10 2010/11/08 - F22 <f22.xda AT gmail DOT com>
+#        - added { } [ ] <> \ ~ and ` as fn-a s z x , . b t and q 
+#          respectively.
+#	 - fixed ! $ and ¢.
+#
+# v1.00 2010/02/01 - Adam Williamson <adamwill AT shaw DOT ca>
+#	 - initial release
+#-------------------------------------------------------------------------------
+# A miscellaneous note for posterity, since it's not immediately
+# plain from any documentation I could find: the hex codes used for
+# characters which have no direct UTF-8 representation are keysym
+# codes.
+#-------------------------------------------------------------------------------
+[type=QWERTY]                                           
+                                                         
+#-------------------------------------------------------------------------------
+# keycode     display  number   base    caps    fn     caps_fn
+#-------------------------------------------------------------------------------
+AT              '@'     '@'     '@'     '@'     '%'     '%'
+BACKSLASH       '_'     '_'     '_'     '_'     0xA2    0xA2
+GRAVE           '!'     '!'     '!'     '!'     '$'     '$'
+LEFT_BRACKET    '('     '('     '('     '('     '&'     '&'
+RIGHT_BRACKET   ')'     ')'     ')'     ')'     '*'     '*'
+APOSTROPHE      '''     '''     '''     '''     '1'     '1'
+EQUALS          '"'     '"'     '"'     '"'     '2'     '2'
+SEMICOLON       ';'     ';'     ';'     ';'     '3'     '3'
+PLUS            ':'     ':'     ':'     ':'     '#'     '#'
+SLASH           '/'     '/'     '/'     '/'     '='     '='
+
+A               'A'     '2'     'a'     'A'     '{'     '{'
+B               'B'     '2'     'b'     'B'     '\'     '\'
+C               'C'     '2'     'c'     'C'     'c'     'C'
+D               'D'     '3'     'd'     'D'     'd'     'D'
+E               'E'     '3'     'e'     'E'     0x20AC  0x20AC
+F               'F'     '3'     'f'     'F'     'f'     'F'
+G               'G'     '4'     'g'     'G'     'g'     'G'
+H               'H'     '4'     'h'     'H'     '7'     '7'
+I               'I'     '4'     'i'     'I'     '6'     '6'
+J               'J'     '5'     'j'     'J'     '8'     '8'
+K               'K'     '5'     'k'     'K'     '9'     '9'
+L               'L'     '5'     'l'     'L'     '|'     '|'
+M               'M'     '6'     'm'     'M'     '?'     '?'
+N               'N'     '6'     'n'     'N'     '0'     '0'
+O               'O'     '6'     'o'     'O'     '+'     '+'
+P               'P'     '7'     'p'     'P'     '-'     '-'
+Q               'Q'     '7'     'q'     'Q'     '`'     '`'
+R               'R'     '7'     'r'     'R'     0xA3    0xA3
+S               'S'     '7'     's'     'S'     '}'     '}'
+T               'T'     '8'     't'     'T'     0x9     0x9
+U               'U'     '8'     'u'     'U'     '5'     '5'
+V               'V'     '8'     'v'     'V'     '^'     '^'
+W               'W'     '9'     'w'     'W'     '~'     '~'
+X               'X'     '9'     'x'     'X'     ']'     ']'
+Y               'Y'     '9'     'y'     'Y'     '4'     '4'
+Z               'Z'     '9'     'z'     'Z'     '['     '['
+
+ENTER           0xA     0xA     0xA     0xA     0xA     0xA
+COMMA           ','     ','     ','     ','     '<'     '<'
+SPACE           0x20    0x20    0x20    0x20    0xEF01  0xEF01
+PERIOD          '.'     '.'     '.'     '.'     '>'     '>'
+
+#---------------------------------------------------------------------
+# Required for the telephone app's software keypad.
+#---------------------------------------------------------------------
+0		'0'	'0'	'0'	'0'	'0'	'0'
+1		'1'	'1'	'1'	'1'	'1'	'1'
+2		'2'	'2'	'2'	'2'	'2'	'2'
+3		'3'	'3'	'3'	'3'	'3'	'3'
+4		'4'	'4'	'4'	'4'	'4'	'4'
+5		'5'	'5'	'5'	'5'	'5'	'5'
+6		'6'	'6'	'6'	'6'	'6'	'6'
+7		'7'	'7'	'7'	'7'	'7'	'7'
+8		'8'	'8'	'8'	'8'	'8'	'8'
+9		'9'	'9'	'9'	'9'	'9'	'9'
+STAR		'*'	'*'	'*'	'*'	'*'	'*'
+POUND		'#'	'#'	'#'	'#'	'#'	'#'
+    
+
+

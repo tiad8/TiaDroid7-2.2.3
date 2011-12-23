@@ -1,0 +1,24 @@
+#!/system/bin/sh
+
+echo "Setting hostname..."
+
+PATH=/system/xbin:/system/bin:/data/bin
+HOSTNAME=/data/local/hostname
+PROP=net.hostname
+
+umask 000
+
+[ -f "$HOSTNAME" ] || echo legend > $HOSTNAME
+
+if [ -s "$HOSTNAME" ]; then
+	hostname `cat $HOSTNAME`
+	mount / -o remount,rw
+	echo "setprop $PROP `cat $HOSTNAME`" > /bootcomplete.legend.rc
+	chmod 644 /bootcomplete.legend.rc
+	mount / -o remount,ro
+else
+	mount / -o remount,rw
+	echo "setprop $PROP \"\"" > /bootcomplete.legend.rc
+	chmod 644 /bootcomplete.legend.rc
+	mount / -o remount,ro
+fi

@@ -1,0 +1,28 @@
+#!/bin/sh
+if [ ! -e /data/wifi-calibration ]; then
+	insmod /lib/modules/mtdchar.ko
+	mknod /dev/mtd/mtd0ro c 90 1
+	mkdir /lib/modules/$(uname -r)
+
+	# Different offset needed for CDMA (DIAM500/RAPH800)
+	if [ "`cat /proc/cpuinfo|grep -o CDMA`" = "CDMA" ]; then
+		SKIP=4048
+	else
+		SKIP=4736
+	fi
+
+	dd if=/dev/mtd/mtd0ro of=/tmp/tempcal bs=8192 count=1 skip=$SKIP
+	rm /dev/mtd/mtd0ro
+	rmmod mtdchar
+	rmdir /lib/modules/$(uname -r)
+	dd if=/tmp/tempcal of=/data/wifi-calibration bs=1 count=752 skip=64
+	rm /sdcard/tempcal
+fi
+CONFIG=/etc/wifi/tiwlan.ini
+CALIBRATION=/data/wifi-calibration
+if cat /proc/cpuinfo|grep -q Kovsky ; then
+#	CONFIG=/etc/wifi/tiwlanx1.ini
+	CALIBRATION=/proc/calibration #seems no calibration is better than a calibration here
+fi
+/etc/wifi/wlan_loader -f /etc/wifi/Fw1251r1c.bin -e $CALIBRATION -i $CONFIG
+/bin/ip link set dev tiwlan0 name wlan0

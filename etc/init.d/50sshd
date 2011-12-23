@@ -1,0 +1,12 @@
+#!/system/bin/sh
+
+PATH="/system/xbin:/system/bin:/data/bin"
+HOME="/data/dropbear"
+
+echo "Starting dropbear..."
+
+[ -d "$HOME" ] || mkdir $HOME
+[ -f "$HOME/authorized_keys" ] || touch $HOME/authorized_keys
+[ -f "$HOME/rsa_host_key" ] || dropbearkey -t rsa -f $HOME/rsa_host_key
+[ -f "$HOME/dss_host_key" ] || dropbearkey -t dss -f $HOME/dss_host_key
+dropbear -A -N root -C root -R $HOME/authorized_keys -s -g && echo "Dropbear is running..."

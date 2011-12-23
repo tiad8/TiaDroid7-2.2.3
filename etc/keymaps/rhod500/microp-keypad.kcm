@@ -1,0 +1,77 @@
+# HTC Touch Pro 2 (RHOD500) Android keyboard layout
+# Justin W. Richeson <jrnosee AT gmail DOT com>
+# Updated from:
+# HTC Touch Pro 2 'Wing 2' (RHOD210) Android keyboard character map
+# Adam Williamson <adamwill AT shaw DOT ca>
+
+#
+# v1.0 (RHOD500) 2010/03/31
+#       - fixed H(\)/B(;) and J(/)/N(:) keys.  The fn key mappings were reversed on the 210
+#
+# v1.0 (RHOD400) 2010/03/02
+#       - fixed H(\)/B(;) and J(/)/N(:) keys.  The fn key mappings were reversed on the 210
+#(previous RHOD210 updates)
+# v1.1 2010/02/03
+#       - add Â£, â¬, \ mappings from international RHOD layouts
+#       - delete a stray comment block
+# v1.0 2010/02/01
+#       - initial release
+
+# A miscellaneous note for posterity, since it's not immediately
+# plain from any documentation I could find: the hex codes used for
+# characters which have no direct UTF-8 representation are keysym
+# codes.
+
+[type=QWERTY]
+
+# keycode       display number  base    caps    fn      caps_fn
+
+# Fn+Y mapped to pipe symbol for console convenience
+
+A               'A'     '2'     'a'     'A'     'a'     'A'
+B               'B'     '2'     'b'     'B'     '_'     '_'
+C               'C'     '2'     'c'     'C'     'c'     'C'
+D               'D'     '3'     'd'     'D'     'd'     'D'
+E               'E'     '3'     'e'     'E'     0x20ac  0x20ac
+F               'F'     '3'     'f'     'F'     'f'     'F'
+G               'G'     '4'     'g'     'G'     'g'     'G'
+H               'H'     '4'     'h'     'H'     ';'     ';'
+I               'I'     '4'     'i'     'I'     '+'     '+'
+J               'J'     '5'     'j'     'J'     ':'     ':'
+K               'K'     '5'     'k'     'K'     0x27    0x27
+L               'L'     '5'     'l'     'L'     '"'     '"'
+M               'M'     '6'     'm'     'M'     '?'     '?'
+N               'N'     '6'     'n'     'N'     '!'     '!'
+O               'O'     '6'     'o'     'O'     '-'     '-'
+P               'P'     '7'     'p'     'P'     '='     '='
+Q               'Q'     '7'     'q'     'Q'     'q'     'Q'
+R               'R'     '7'     'r'     'R'     'r'     'R'
+S               'S'     '7'     's'     'S'     's'     'S'
+T               'T'     '8'     't'     'T'     't'     'T'
+U               'U'     '8'     'u'     'U'     '/'     '/'
+V               'V'     '8'     'v'     'V'     'v'     'V'
+W               'W'     '9'     'w'     'W'     0xa3    0xa3
+X               'X'     '9'     'x'     'X'     'x'     'X'
+Y               'Y'     '9'     'y'     'Y'     '\'     '\'
+Z               'Z'     '9'     'z'     'Z'     'z'     'Z'
+
+0               '0'     '0'     '0'     '0'     ')'     ')'
+1               '1'     '1'     '1'     '1'     '~'     '~'
+2               '2'     '2'     '2'     '2'     '@'     '@'
+3               '3'     '3'     '3'     '3'     '#'     '#'
+4               '4'     '4'     '4'     '4'     '$'     '$'
+5               '5'     '5'     '5'     '5'     '%'     '%'
+6               '6'     '6'     '6'     '6'     '^'     '^'
+7               '7'     '7'     '7'     '7'     '&'     '&'
+8               '8'     '8'     '8'     '8'     '*'     '*'
+9               '9'     '9'     '9'     '9'     '('     '('
+STAR            '*'     '*'     '*'     '*'     '*'     '*'
+POUND           '#'     '#'     '#'     '#'     '#'     '#'
+PLUS            '+'     '+'     '+'     '+'     '+'     '+'
+
+MENU            0x00    0x00    0x00    0x00    0x00    0x00
+PERIOD          '.'     '.'     '.'     '.'     ','     ','
+#COMMA           ','     ','     ','     ','     0x9    0x9
+SPACE           0x20    0x20    0x20    0x20    0x20    0x20
+ENTER           0xa     0xa     0xa     0xa     0xa     0xa
+GRAVE           0x3     0x3     0x3     0x3     0x3     0x3

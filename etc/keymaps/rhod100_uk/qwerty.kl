@@ -1,0 +1,17 @@
+# HTC for AT&T 'rhod100 uk' (Rhodium100 UK Vodafone variant) Android 'navipad' layout
+# Szymon Waliczek [majsterrr@gmail.com]
+
+# v1.0 2010/02/03
+#	- initial release
+# v1.1 2010/02/06
+# POWER and HOME buttons swaped over.
+
+# Very few buttons on the Tilt 2 are handled by the gpio driver.
+
+key 116   POWER             WAKE
+key 107   HOME           WAKE_DROPPED
+key 114   VOLUME_DOWN
+key 115   VOLUME_UP
+
+
+key 169   CAMERA # Push to talk
