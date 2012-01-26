@@ -1,0 +1,18 @@
+# HTC Fuze (AT&T) Capacitive Navi-pad Layout
+
+# Navipad
+key 103   DPAD_UP           WAKE_DROPPED
+key 105   DPAD_LEFT         WAKE_DROPPED
+key 108   DPAD_DOWN         WAKE_DROPPED
+key 106   DPAD_RIGHT        WAKE_DROPPED
+key 102   HOME              WAKE_DROPPED
+key 158   BACK              WAKE_DROPPED
+key 107   ENDCALL           WAKE_DROPPED
+key 231   CALL              WAKE_DROPPED
+key 232   MENU              WAKE_DROPPED
+
+# Physical Keys
+key 116   POWER             WAKE # Power button
+key 114   VOLUME_DOWN
+key 115   VOLUME_UP
+key 169   CAMERA # Push to talk

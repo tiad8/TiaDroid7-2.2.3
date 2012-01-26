@@ -1,0 +1,10 @@
+# HTC Touch Diamond 2 'TOPAxxx' Android keypad layout
+# Michael Weirauch [mweirauch@xdandroid.com]
+
+key 116   POWER         WAKE            # KEY_POWER
+key 114   VOLUME_DOWN                   # KEY_VOLUMEDOWN
+key 115   VOLUME_UP                     # KEY_VOLUMEUP
+key 231   CALL                          # KEY_SEND
+key 139   MENU                          # KEY_MENU
+key 158   BACK                          # KEY_BACK
+key 107   HOME          WAKE_DROPPED    # KEY_END mapped to HOME (since introduction of touch dialer)

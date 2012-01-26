@@ -1,5 +1,16 @@
-NEW FROYO 2.2.3 AOSP
+FROYO 2.2.3 AOSP
 
+2011.12.22
 -you will need latest sd recovery V5
+-first rerlease
 
+2012.01.26
+-added tiadroid6 phone.apk back
+-fixed sync issue
+--once you sync with google, these apks will update to map 6.2.0, market 3.4.4, and youtube 2.3.4
+-added adw.launcher only
+-added latest astro file manager
+-added latest spareparts with no ads
+-added the latest TitaniumBackup
+-updated recovery V5
 
